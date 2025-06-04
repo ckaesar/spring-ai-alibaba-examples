@@ -16,6 +16,7 @@
  */
 package com.alibaba.cloud.ai.example.chat.deepseek.controller;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Flux;
 
 import org.springframework.ai.chat.client.ChatClient;
@@ -57,10 +58,11 @@ public class DeepSeekChatClientController {
      * @apiNote 当前硬编码指定模型为deepseek-chat，温度参数0.7以平衡生成结果的创造性和稳定性
      */
     @GetMapping(value = "/ai/customOptions")
-    public ChatResponse customOptions () {
+    public ChatResponse customOptions (@RequestParam("prompt") String prompt) {
 
         return this.DeepSeekChatClient.prompt(new Prompt(
-                "Generate the names of 5 famous pirates.",
+//                "Generate the names of 5 famous pirates.",
+                                prompt,
                         DeepSeekChatOptions.builder().temperature(0.75).build())
                 ).call()
                 .chatResponse();

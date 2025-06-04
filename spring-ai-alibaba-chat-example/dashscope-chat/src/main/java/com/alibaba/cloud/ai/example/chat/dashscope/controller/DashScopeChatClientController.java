@@ -19,6 +19,7 @@ package com.alibaba.cloud.ai.example.chat.dashscope.controller;
 
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatOptions;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Flux;
 
 import org.springframework.ai.chat.client.ChatClient;
@@ -69,9 +70,9 @@ public class DashScopeChatClientController {
 	 * ChatClient 简单调用
 	 */
 	@GetMapping("/simple/chat")
-	public String simpleChat() {
+	public String simpleChat(@RequestParam(value = "prompt", required = false, defaultValue = DEFAULT_PROMPT) String prompt) {
 
-		return dashScopeChatClient.prompt(DEFAULT_PROMPT).call().content();
+		return dashScopeChatClient.prompt(prompt).call().content();
 	}
 
 	/**
