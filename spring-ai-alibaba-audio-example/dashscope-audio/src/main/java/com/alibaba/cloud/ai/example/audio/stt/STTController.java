@@ -67,6 +67,11 @@ public class STTController {
 		this.transcriptionModel = transcriptionModel;
 	}
 
+	/**
+	 * 语音转文本-在线语音
+	 * @return
+	 * @throws MalformedURLException
+	 */
 	@GetMapping
 	public String stt() throws MalformedURLException {
 
@@ -82,6 +87,10 @@ public class STTController {
 		return response.getResult().getOutput();
 	}
 
+	/**
+	 * 语音转文本-本地语音-流式输出
+	 * @return
+	 */
 	@GetMapping("/stream")
 	public String streamSTT() {
 
@@ -91,7 +100,7 @@ public class STTController {
 		Flux<AudioTranscriptionResponse> response = transcriptionModel
 				.stream(
 						new AudioTranscriptionPrompt(
-								new FileSystemResource("spring-ai-alibaba-audio-example/dashscope-audio/src/main/resources/gen/tts/output.mp3"),
+								new FileSystemResource("spring-ai-alibaba-audio-example/dashscope-audio/src/main/resources/gen/tts/hello_world_female2.wav"),
 								DashScopeAudioTranscriptionOptions.builder()
 										.withModel(DEFAULT_MODEL_2)
 										.withSampleRate(16000)
@@ -117,6 +126,10 @@ public class STTController {
 		return stringBuilder.toString();
 	}
 
+	/**
+	 * 语音转文本-异步处理
+	 * @return
+	 */
 	@GetMapping("/async")
 	public String asyncSTT() {
 		StringBuilder stringBuilder = new StringBuilder();

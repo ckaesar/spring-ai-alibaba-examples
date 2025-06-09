@@ -17,6 +17,7 @@ package com.alibaba.cloud.ai.toolcall.controller;
 
 import com.alibaba.cloud.ai.toolcall.component.TimeTools;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,7 +48,7 @@ public class TimeController {
      */
     @GetMapping("/chat-tool-method")
     public String chatWithTimeFunction(@RequestParam(value = "query", defaultValue = "请告诉我现在北京时间几点了") String query) {
-        return dashScopeChatClient.prompt(query).tools(timeTools).call().content();
+        return dashScopeChatClient.prompt(query).advisors(new SimpleLoggerAdvisor()).tools(timeTools).call().content();
     }
 
 }

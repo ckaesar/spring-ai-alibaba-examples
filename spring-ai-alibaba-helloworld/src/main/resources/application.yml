@@ -1,5 +1,5 @@
 server:
-  port: 18080
+  port: 8090
 
 spring:
   application:
@@ -8,3 +8,8 @@ spring:
   ai:
     dashscope:
       api-key: ${AI_DASHSCOPE_API_KEY}
+
+logging:
+  level:
+    # 设置Spring AI聊天客户端的Advisor日志级别
+    org.springframework.ai.chat.client.advisor: DEBUG
