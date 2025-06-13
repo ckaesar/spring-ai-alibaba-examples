@@ -25,7 +25,7 @@
 		<jackson.version>2.15.0</jackson.version>
 		<hibernate.version>6.6.9.Final</hibernate.version>
 		<sqlite-jdbc.version>3.49.1.0</sqlite-jdbc.version>
-		<knife4j.version>4.4.0</knife4j.version>
+		<knife4j.version>4.6.0</knife4j.version>
 		<javacv-platform.version>1.5.9</javacv-platform.version>
 
 		<maven.compiler.source>17</maven.compiler.source>
@@ -146,7 +146,7 @@
 
 		<!-- Swagger API Docs -->
 		<dependency>
-			<groupId>com.github.xiaoymin</groupId>
+			<groupId>com.github.xingfudeshi</groupId>
 			<artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
 			<version>${knife4j.version}</version>
 		</dependency>
@@ -356,6 +356,24 @@
 							<resources>
 								<resource>
 									<directory>${project.basedir}/mcp-libs</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+
+					<!-- Add new execution to copy db directory -->
+					<execution>
+						<id>copy-db</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/db</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/db</directory>
 									<filtering>false</filtering>
 								</resource>
 							</resources>
