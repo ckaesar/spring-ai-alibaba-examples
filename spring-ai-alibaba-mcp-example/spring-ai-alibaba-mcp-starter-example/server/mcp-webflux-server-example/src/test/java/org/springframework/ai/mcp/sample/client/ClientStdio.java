@@ -39,7 +39,7 @@ public class ClientStdio {
                         "-Dspring.main.web-application-type=none",
                         "-Dlogging.pattern.console=",
                         "-jar",
-                        "spring-ai-alibaba-mcp-example/starter-example/server/starter-webflux-server/target/mcp-starter-webflux-server-0.0.1-SNAPSHOT.jar")
+                        "D:\\b\\spring-ai-alibaba-mcp-example\\spring-ai-alibaba-mcp-starter-example\\server\\mcp-webflux-server-example\\target\\mcp-webflux-server-example-1.0.0.jar")
                 .build();
 
         var transport = new StdioClientTransport(stdioParams);

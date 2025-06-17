@@ -41,7 +41,7 @@ public class ClientStdio {
                         "-Dspring.ai.mcp.server.stdio=true",
                         "-Dspring.main.web-application-type=none",
                         "-Dlogging.pattern.console=",
-                        "spring-ai-alibaba-mcp-example/starter-example/server/starter-stdio-server/target/mcp-stdio-server-example-0.0.1-SNAPSHOT.jar")
+                        "D:\\b\\spring-ai-alibaba-mcp-example\\spring-ai-alibaba-mcp-starter-example\\server\\mcp-stdio-server-example\\target\\mcp-stdio-server-example-1.0.0.jar")
                 .build();
 
         var transport = new StdioClientTransport(stdioParams);
