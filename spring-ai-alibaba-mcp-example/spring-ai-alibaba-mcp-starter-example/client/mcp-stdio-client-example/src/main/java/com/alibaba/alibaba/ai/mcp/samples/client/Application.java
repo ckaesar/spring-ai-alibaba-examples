@@ -33,7 +33,7 @@ public class Application {
     }
 
     // 直接硬编码中文问题，避免配置文件编码问题
-    private String userInput = "北京的天气如何？";
+    private String userInput = "武汉的天气如何？";
 
     @Bean
     public CommandLineRunner predefinedQuestions(ChatClient.Builder chatClientBuilder, ToolCallbackProvider tools,

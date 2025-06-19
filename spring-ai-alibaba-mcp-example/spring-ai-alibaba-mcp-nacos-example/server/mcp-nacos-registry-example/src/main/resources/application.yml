@@ -1,5 +1,5 @@
 server:
-  port: 21000
+  port: 8090
 
 spring:
   application:
@@ -21,7 +21,7 @@ spring:
     alibaba:
       mcp:
         nacos:
-          namespace: 4ad3108b-4d44-43d0-9634-3c1ac4850c8c
+          namespace: eb466cbc-091a-4386-8b8d-6d1ce7b9d7c6
           server-addr: 127.0.0.1:8848
           username: nacos
           password: nacos
