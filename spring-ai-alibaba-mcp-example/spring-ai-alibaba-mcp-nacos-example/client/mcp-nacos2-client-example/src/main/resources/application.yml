@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8095
 
 spring:
   application:
@@ -8,11 +8,7 @@ spring:
     web-application-type: none
   ai:
     dashscope:
-      api-key: ${DASHSCOPE_API_KEY}
-      base-url: https://dashscope.aliyuncs.com
-      chat:
-        options:
-          model: qwen-max
+      api-key: ${AI_DASHSCOPE_API_KEY}
     mcp:
       client:
         enabled: true
@@ -26,7 +22,7 @@ spring:
         nacos:
           enabled: true
           server-addr: 127.0.0.1:8848
-          namespace: 9ba5f1aa-b37d-493b-9057-72918a40ef35
+          namespace: eb466cbc-091a-4386-8b8d-6d1ce7b9d7c6
           username: nacos
           password: nacos
 

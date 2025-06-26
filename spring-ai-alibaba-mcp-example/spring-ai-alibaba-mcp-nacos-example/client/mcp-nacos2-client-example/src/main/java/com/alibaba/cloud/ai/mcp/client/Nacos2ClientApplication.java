@@ -1,7 +1,9 @@
 package com.alibaba.cloud.ai.mcp.client;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.tool.ToolCallbackProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +23,9 @@ public class Nacos2ClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(Nacos2ClientApplication.class, args);
     }
+
+    @Autowired
+    private ChatModel chatModel;
 
     @Bean
     public CommandLineRunner predefinedQuestions(ChatClient.Builder chatClientBuilder, @Qualifier("loadbalancedMcpAsyncToolCallbacks") ToolCallbackProvider tools,
