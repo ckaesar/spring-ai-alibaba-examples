@@ -47,27 +47,27 @@ public class MemoryConfig {
 				.build();
 	}
 
-	@Bean
-	public MysqlChatMemoryRepository mysqlChatMemoryRepository() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(mysqlDriverClassName);
-		dataSource.setUrl(mysqlJdbcUrl);
-		dataSource.setUsername(mysqlUsername);
-		dataSource.setPassword(mysqlPassword);
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		return MysqlChatMemoryRepository.mysqlBuilder()
-				.jdbcTemplate(jdbcTemplate)
-				.build();
-	}
+//	@Bean
+//	public MysqlChatMemoryRepository mysqlChatMemoryRepository() {
+//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//		dataSource.setDriverClassName(mysqlDriverClassName);
+//		dataSource.setUrl(mysqlJdbcUrl);
+//		dataSource.setUsername(mysqlUsername);
+//		dataSource.setPassword(mysqlPassword);
+//		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+//		return MysqlChatMemoryRepository.mysqlBuilder()
+//				.jdbcTemplate(jdbcTemplate)
+//				.build();
+//	}
 
-	@Bean
-	public RedisChatMemoryRepository redisChatMemoryRepository() {
-		return RedisChatMemoryRepository.builder()
-				.host(redisHost)
-				.port(redisPort)
-				// 若没有设置密码则注释该项
-//				.password(redisPassword)
-				.timeout(redisTimeout)
-				.build();
-	}
+//	@Bean
+//	public RedisChatMemoryRepository redisChatMemoryRepository() {
+//		return RedisChatMemoryRepository.builder()
+//				.host(redisHost)
+//				.port(redisPort)
+//				// 若没有设置密码则注释该项
+////				.password(redisPassword)
+//				.timeout(redisTimeout)
+//				.build();
+//	}
 }

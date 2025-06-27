@@ -67,7 +67,7 @@ public class Application {
 	public McpSyncClient mcpClient() {
 
 		// Windows 需要替换 uvx.exe
-		var stdioParams = ServerParameters.builder("uvx")
+		var stdioParams = ServerParameters.builder("D:\\apps\\anaconda3\\pkgs\\uv-0.7.15-he94b42d_0\\Library\\bin\\uvx.exe")
 				.args("mcp-server-sqlite", "--db-path",
 						getDbPath())
 				.build();

@@ -56,7 +56,7 @@ public class Application {
 		// based on
 		// https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem
 		// Windows 系统需要改为 npx.cmd
-		var stdioParams = ServerParameters.builder("npx")
+		var stdioParams = ServerParameters.builder("D:\\apps\\nodejs\\node_modules\\corepack\\shims\\nodewin\\npx.cmd")
 				.args("-y", "@modelcontextprotocol/server-filesystem", getDbPath())
 				.build();
 
@@ -75,7 +75,7 @@ public class Application {
 
 		// spring-ai-alibaba-examples/spring-ai-alibaba-mcp-example/spring-ai-alibaba-manual-mcp-example/ai-mcp-fileserver/target
 		// windows use: spring-ai-alibaba-mcp-example/spring-ai-alibaba-manual-mcp-example/ai-mcp-fileserver/target
-		String path = Paths.get(System.getProperty("user.dir"), "spring-ai-alibaba-mcp-example/spring-ai-alibaba-manual-mcp-example/ai-mcp-fileserver/target").toString();
+		String path = Paths.get(System.getProperty("user.dir"), "spring-ai-alibaba-mcp-example\\spring-ai-alibaba-mcp-manual-example\\ai-mcp-fileserver\\target").toString();
 		System.out.println(path);
 
 		return path;

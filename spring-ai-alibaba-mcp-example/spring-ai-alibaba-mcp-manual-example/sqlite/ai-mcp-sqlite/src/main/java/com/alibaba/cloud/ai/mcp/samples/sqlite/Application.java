@@ -63,8 +63,8 @@ public class Application {
 	@Bean(destroyMethod = "close")
 	public McpSyncClient mcpClient() {
 
-		// Windows 系统需要修改
-		var stdioParams = ServerParameters.builder("uvx")
+		// Windows 系统需要修改 uvx.exe
+		var stdioParams = ServerParameters.builder("D:\\apps\\anaconda3\\pkgs\\uv-0.7.15-he94b42d_0\\Library\\bin\\uvx.exe")
 				.args("mcp-server-sqlite", "--db-path",
 						getDbPath())
 				.build();
@@ -82,7 +82,7 @@ public class Application {
 
 	private static String getDbPath() {
 
-		String path = Paths.get(System.getProperty("user.dir"), "test.db").toString();
+		String path = Paths.get(System.getProperty("user.dir"), "\\spring-ai-alibaba-mcp-example\\spring-ai-alibaba-mcp-manual-example\\sqlite\\ai-mcp-sqlite\\", "test.db").toString();
 		System.out.println(path);
 
 		return path;
