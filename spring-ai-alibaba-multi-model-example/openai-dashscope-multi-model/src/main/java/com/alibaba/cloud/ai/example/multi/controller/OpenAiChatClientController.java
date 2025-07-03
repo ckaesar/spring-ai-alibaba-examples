@@ -34,7 +34,7 @@ import java.net.URI;
  * @author xiaoyu Miao
  */
 @RestController
-@RequestMapping("openai/client")
+@RequestMapping("/openai/client")
 public class OpenAiChatClientController {
 
     private final ChatClient chatClient;
