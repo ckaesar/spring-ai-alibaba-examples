@@ -8,7 +8,7 @@ spring:
   ai:
     ollama:
       chat:
-        model: qwen2.5
+        model: deepseek-r1:8b
         enabled: true
 
     dashscope:

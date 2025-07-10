@@ -26,4 +26,4 @@ spring:
       api-key: ${AI_DASHSCOPE_API_KEY}
 
 server:
-  port: 8080
+  port: 8090
