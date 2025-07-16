@@ -2,15 +2,15 @@ package com.alibaba.cloud.ai.example.rag.knowledge.config;
 
 import com.alibaba.cloud.ai.dashscope.api.DashScopeApi;
 
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author yuluo
  * @author <a href="mailto:yuluo08290126@gmail.com">yuluo</a>
  */
 
-@AutoConfiguration
+@Configuration
 public class BailianAutoconfiguration {
 
 	/**
