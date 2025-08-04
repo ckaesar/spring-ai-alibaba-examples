@@ -66,7 +66,7 @@ public class GraphBuilder {
 
         // —— HttpNode [1711529077513] ——
         HttpNode http1 = HttpNode.builder()
-                .url("http://47.83.24.236:38080/negative")
+                .url("http://localhost:8090/negative")
                 .header("Content-Type", "application/json")
                 .retryConfig(new HttpNode.RetryConfig(3, 100, true))
                 .outputKey("1711529077513_output")
@@ -75,7 +75,7 @@ public class GraphBuilder {
 
         // —— HttpNode [17440815773820] ——
         HttpNode http2 = HttpNode.builder()
-                .url("http://47.83.24.236:38080/positive")
+                .url("http://localhost:8090/positive")
                 .header("Content-Type", "application/json")
                 .retryConfig(new HttpNode.RetryConfig(3, 100, true))
                 .outputKey("17440815773820_output")
