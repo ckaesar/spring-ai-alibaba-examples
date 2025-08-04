@@ -16,17 +16,11 @@
 
 package com.alibaba.cloud.ai.example.multi.controller;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.HashMap;
-import java.util.List;
-
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatOptions;
 import com.alibaba.cloud.ai.dashscope.chat.MessageFormat;
 import com.alibaba.cloud.ai.dashscope.common.DashScopeApiConstants;
 import com.alibaba.cloud.ai.example.multi.helper.FrameExtraHelper;
 import jakarta.annotation.Resource;
-
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatModel;
@@ -34,11 +28,16 @@ import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.content.Media;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.MediaType;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.net.URI;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author yuluo
@@ -57,7 +56,9 @@ public class MultiModelController {
     private static final String DEFAULT_PROMPT = "这些是什么？";
     
     private static final String DEFAULT_VIDEO_PROMPT = "这是一组从视频中提取的图片帧，请描述此视频中的内容。";
-    
+
+    private static final String DEFAULT_AUDIO_PROMPT = "这是一个音频文件，请描述此音频中的内容。";
+
     private static final String DEFAULT_MODEL = "qwen-vl-max-latest";
     
     public MultiModelController(ChatModel chatModel) {
@@ -101,6 +102,26 @@ public class MultiModelController {
                 .call()
                 .chatResponse();
         
+        return response.getResult().getOutput().getText();
+    }
+
+    @GetMapping("/audio")
+    public String audio(
+            @RequestParam(value = "prompt", required = false, defaultValue = DEFAULT_AUDIO_PROMPT) String prompt) {
+
+        Media media = new Media(MediaType.parseMediaType("audio/mpeg"),
+                URI.create("https://dashscope.oss-cn-beijing.aliyuncs.com/audios/welcome.mp3"));;
+
+        UserMessage message =
+        UserMessage.builder().text(prompt).media(media).metadata(new HashMap<>()).build();
+        message.getMetadata().put(DashScopeApiConstants.MESSAGE_FORMAT, MessageFormat.AUDIO);
+
+        ChatResponse response = dashScopeChatClient
+                .prompt(new Prompt(message,
+                        DashScopeChatOptions.builder().withModel("qwen-audio-turbo-latest").withMultiModel(true).build()))
+                .call()
+                .chatResponse();
+
         return response.getResult().getOutput().getText();
     }
     
